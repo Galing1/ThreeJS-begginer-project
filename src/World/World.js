@@ -1,4 +1,3 @@
-import { createButtonAnimation } from './components/button.js';
 import { createCamera } from './components/camera.js';
 import { createCube } from './components/cube.js';
 import { createLights } from './components/lights.js';
@@ -23,7 +22,6 @@ class World {
     container.append(renderer.domElement);
 
     const controls = createControls(camera, renderer.domElement) ;
-    const button = createButtonAnimation() ;
 
     const cube = createCube(); // Modified to return an array of cubes
     const light = createLights();
@@ -32,7 +30,6 @@ class World {
     controls.target.copy(cube.position) ;
 
     loop.updatables.push(controls) ;
-    loop.updatables.push(button) ;
 
     controls.addEventListener('change', () => {
       renderer.render(scene, camera);
