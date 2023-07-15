@@ -11,7 +11,7 @@ import {
 function createMaterial() {
   const textureLoader = new TextureLoader() ;
   const texture = textureLoader.load(
-    'assets/textures/uv-test.png',
+    'assets/textures/uv-test-2.png',
   ) ;
 
   const material = new MeshStandardMaterial({ map: texture });

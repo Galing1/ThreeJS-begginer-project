@@ -1,4 +1,3 @@
-import { MathUtils } from 'three';
 import { OrbitControls } from '../../three/examples/jsm/controls/OrbitControls.js';
 
 function createControls(camera, canvas) {

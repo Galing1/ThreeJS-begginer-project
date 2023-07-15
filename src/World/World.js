@@ -24,7 +24,7 @@ class World {
     const controls = createControls(camera, renderer.domElement) ;
 
     const cube = createCube(); // Modified to return an array of cubes
-    const { ambientLight, mainLight } = createLights() ;
+    const { ambientLight, mainLight, directionalLight } = createLights() ;
 
     //loop.updatables.push(cube) ;
     controls.target.copy(cube.position) ;
@@ -39,7 +39,7 @@ class World {
     controls.autoRotateSpeed = 1;
 
     scene.add(cube);
-    scene.add(ambientLight, mainLight);
+    scene.add(ambientLight, mainLight, directionalLight);
   
     const resizer = new Resizer(container, camera, renderer);
   }
