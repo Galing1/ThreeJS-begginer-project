@@ -1,4 +1,4 @@
-import { Mesh } from "../../../three/build/three.module.js" ;
+import { Mesh, Group } from "../../../three/build/three.module.js" ;
 
 import { createGeometries } from "./geometries.js";
 import { createMaterials } from "./materials.js";
@@ -8,6 +8,7 @@ function createMeshes() {
   const material = createMaterials() ;
 
   const trackRailArray = [] ;
+  const humanArray = [] ;
 
   const cabin = new Mesh(geometry.cabin, material.body) ;
   cabin.position.set(1.5, 1.4, 0);
@@ -64,6 +65,34 @@ function createMeshes() {
     console.log('hi') ;
   }
 
+  const human = new Group() ;
+
+  const humanFace = new Mesh(geometry.humanFace, material.humanFace) ;
+  humanFace.position.set(2, 2.5, 2) ;
+
+  const humanBody = new Mesh(geometry.humanBody, material.humanBody) ;
+  humanBody.position.set(2, 1.65, 2) ;
+  humanBody.rotation.x = Math.PI / 2 ;
+  humanBody.rotation.y = Math.PI / 2 ;
+
+  const humanLeg = new Mesh(geometry.humanLeg, material.humanLeg) ;
+  humanLeg.position.set(2.1, 0.65, 2.15) ;
+  const humanLeg2 = new Mesh(geometry.humanLeg, material.humanLeg) ;
+  humanLeg2.position.set(2.1, 0.65, 1.85) ;
+
+  human.add(humanFace, humanBody, humanLeg, humanLeg2) ;
+
+  human.position.x -= 1 ;
+
+  let human2 ;
+
+  for (let i = 1 ; i < 4 ; i++) {
+    human2 = human.clone() ;
+    human2.position.x -= i ;
+
+    humanArray.push(human2) ;
+  }
+
   return { 
     cabin, 
     chimney, 
@@ -77,7 +106,12 @@ function createMeshes() {
     trackSide,
     trackSide2,
     trackRail,
-    trackRail2: trackRailArray
+    trackRail2: trackRailArray, 
+    humanFace,
+    humanBody,
+    humanLeg,
+    humanLeg2,
+    human2: humanArray
   } ;
 }
 

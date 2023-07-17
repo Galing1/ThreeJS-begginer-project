@@ -22,7 +22,12 @@ class Train extends Group {
       this.meshes.window2,
       this.meshes.trackSide,
       this.meshes.trackSide2,
-      this.meshes.trackRail
+      this.meshes.trackRail,
+      this.meshes.humanFace,
+      this.meshes.humanBody,
+      this.meshes.humanLeg,
+      this.meshes.humanLeg2,
+      this.meshes.human2
     ) ;
   }
 

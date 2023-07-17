@@ -12,35 +12,38 @@ import { Loop } from './systems/Loop.js';
 let camera;
 let scene;
 let renderer;
-let loop ;
+let loop;
 
 class World {
   constructor(container) {
     camera = createCamera();
     scene = createScene();
     renderer = createRenderer();
-    loop = new Loop(camera, scene, renderer) ;
+    loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
 
-    const controls = createControls(camera, renderer.domElement) ;
-    const train = new Train() ;
+    const controls = createControls(camera, renderer.domElement);
+    const train = new Train();
 
     train.meshes.trackRail2.forEach((trackRail2) => {
       train.add(trackRail2);
     });
 
+    train.meshes.human2.forEach((human2) => {
+      train.add(human2);
+    }) ;
     //const cube = createCube(); 
     // Modified to return an array of cubes
-    const { ambientLight, mainLight } = createLights() ;
+    const { ambientLight, mainLight } = createLights();
 
     //loop.updatables.push(cube) ;
-    loop.updatables.push(controls, train) ;
+    loop.updatables.push(controls, train);
 
     controls.autoRotate = true;
     controls.autoRotateSpeed = 1;
 
     scene.add(ambientLight, mainLight, train);
-  
+
     const resizer = new Resizer(container, camera, renderer);
 
     scene.add(createAxesHelper(), createGridHelper());
@@ -51,11 +54,11 @@ class World {
   }
 
   start() {
-    loop.start() ;
+    loop.start();
   }
 
   stop() {
-    loop.stop() ;
+    loop.stop();
   }
 }
 

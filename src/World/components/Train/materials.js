@@ -21,8 +21,18 @@ function createMaterials() {
     color: 'chocolate',
     flatShading: true 
   }) ;
+  //#eebb99
+  const humanFace = new MeshStandardMaterial({
+    color: 'blue'
+  }) ;
+  const humanBody = new MeshStandardMaterial({
+    color: 'yellow'
+  }) ;
+  const humanLeg = new MeshStandardMaterial({
+    color: 'blue'
+  }) ;
   
-  return { body, detail, out, trackSide, trackRail } ;
+  return { body, detail, out, trackSide, trackRail, humanFace, humanBody, humanLeg } ;
 }
 
 export { createMaterials } ;
