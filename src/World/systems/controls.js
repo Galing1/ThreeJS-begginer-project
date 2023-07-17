@@ -7,7 +7,7 @@ function createControls(camera, canvas) {
   controls.minDistance = 5 ;
   controls.maxDistance = 20 ;
 
-  controls.dampingFactor = 0.7 ;
+  controls.target.y = 1;
 
   controls.tick = () => controls.update() ;
 

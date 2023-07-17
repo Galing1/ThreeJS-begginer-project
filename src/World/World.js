@@ -1,7 +1,8 @@
 import { createCamera } from './components/camera.js';
-import { createMeshGroup } from './components/meshGroup.js';
+import { createAxesHelper, createGridHelper } from './components/helpers.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
+import { Train } from './components/Train/Train.js';
 
 import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
@@ -22,7 +23,9 @@ class World {
     container.append(renderer.domElement);
 
     const controls = createControls(camera, renderer.domElement) ;
-    const meshGroup = createMeshGroup() ;
+    const train = new Train() ;
+    const train2 = train.clone() ;
+    const train3 = train.clone() ;
 
     //const cube = createCube(); 
     // Modified to return an array of cubes
@@ -30,14 +33,19 @@ class World {
 
     //loop.updatables.push(cube) ;
 
-    loop.updatables.push(controls, meshGroup) ;
+    loop.updatables.push(controls, train, train2, train3) ;
 
     controls.autoRotate = true;
     controls.autoRotateSpeed = 1;
 
-    scene.add(ambientLight, mainLight, meshGroup);
+    train2.position.z += 3 ;
+    train3.position.z -= 3 ;
+
+    scene.add(ambientLight, mainLight, train, train2, train3);
   
     const resizer = new Resizer(container, camera, renderer);
+
+    scene.add(createAxesHelper(), createGridHelper());
   }
 
   render() {

@@ -10,7 +10,9 @@ function createMeshGroup() {
   const group = new Group() ;
 
   const geometry = new SphereGeometry(0.25, 16, 16) ;
-  const material = new MeshStandardMaterial({ color: 'indigo'
+  const material = new MeshStandardMaterial({ 
+    color: 'indigo',
+    flatShading: true 
   }) ;
 
   const protoSphere = new Mesh(geometry, material) ;
