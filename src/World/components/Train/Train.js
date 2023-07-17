@@ -17,7 +17,12 @@ class Train extends Group {
       this.meshes.smallWheelRear,
       this.meshes.smallWheelCenter,
       this.meshes.smallWheelFront,
-      this.meshes.bigWheel
+      this.meshes.bigWheel,
+      this.meshes.window,
+      this.meshes.window2,
+      this.meshes.trackSide,
+      this.meshes.trackSide2,
+      this.meshes.trackRail
     ) ;
   }
 

@@ -9,7 +9,13 @@ function createGeometries() {
 
   const chimney = new CylinderGeometry(0.3, 0.1, 0.5) ;
 
-  return { cabin, nose, wheel, chimney } ;
+  const window = new BoxGeometry(1.3, 1.25, 0.1) ;
+
+  const trackSide = new CylinderGeometry(0.1, 0.1, 6, 16) ;
+
+  const trackRail = new CylinderGeometry(0.1, 0.1, 2, 16) ;
+ 
+  return { cabin, nose, wheel, chimney, window, trackSide, trackRail } ;
 }
 
 export { createGeometries } ;

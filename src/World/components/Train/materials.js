@@ -9,8 +9,20 @@ function createMaterials() {
     color: 'darkslategray',
     flatShading: true
   }) ;
+  const out = new MeshStandardMaterial({
+    color: 'white',
+    flatShading: true 
+  }) ;
+  const trackSide = new MeshStandardMaterial({
+    color: 'black',
+    flatShading: true 
+  }) ;
+  const trackRail = new MeshStandardMaterial({
+    color: 'chocolate',
+    flatShading: true 
+  }) ;
   
-  return { body, detail } ;
+  return { body, detail, out, trackSide, trackRail } ;
 }
 
 export { createMaterials } ;

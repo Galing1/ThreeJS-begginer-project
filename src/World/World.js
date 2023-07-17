@@ -24,23 +24,22 @@ class World {
 
     const controls = createControls(camera, renderer.domElement) ;
     const train = new Train() ;
-    const train2 = new Train() ;
-    const train3 = new Train() ;
+
+    train.meshes.trackRail2.forEach((trackRail2) => {
+      train.add(trackRail2);
+    });
 
     //const cube = createCube(); 
     // Modified to return an array of cubes
     const { ambientLight, mainLight } = createLights() ;
 
-    train2.position.z += 3 ;
-    train3.position.z -= 3 ;
-
     //loop.updatables.push(cube) ;
-    loop.updatables.push(controls, train, train2, train3) ;
+    loop.updatables.push(controls, train) ;
 
     controls.autoRotate = true;
     controls.autoRotateSpeed = 1;
 
-    scene.add(ambientLight, mainLight, train, train2, train3);
+    scene.add(ambientLight, mainLight, train);
   
     const resizer = new Resizer(container, camera, renderer);
 
