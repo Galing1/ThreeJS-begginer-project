@@ -10,6 +10,7 @@ function createMeshes() {
   const trackRailArray = [] ;
   const humanArray = [] ;
   const smokeArray = [] ;
+  const cloudArray = [] ;
 
   const cabin = new Mesh(geometry.cabin, material.body) ;
   cabin.position.set(1.5, 1.4, 0);
@@ -117,6 +118,36 @@ function createMeshes() {
     smokeArray.push(smoke2) ;
   }
 
+  const cloudGroup = new Group();
+
+  const cloudBig = new Mesh(geometry.cloudBig, material.cloud);
+  cloudBig.position.y = 5;
+
+  const cloudBig2 = cloudBig.clone();
+  cloudBig2.position.x += 0.8;
+  cloudBig2.position.z = -1;
+  cloudBig2.position.y += 0.3;
+
+  const cloudSmall = new Mesh(geometry.cloudSmall, material.cloud);
+  cloudSmall.position.y = 5;
+  cloudSmall.position.z = -1;
+
+  const cloudSmall2 = cloudSmall.clone();
+  cloudSmall2.position.y += 0.8;
+  cloudSmall2.position.x = 1;
+  cloudSmall2.position.z = -0.3;
+
+  const cloudTiny = new Mesh(geometry.cloudTiny, material.cloud);
+  cloudTiny.position.y = 5;
+  cloudTiny.position.z = -1.75;
+
+  const cloudTiny2 = cloudTiny.clone();
+  cloudTiny.position.z = 1.15;
+
+  cloudGroup.add(cloudBig, cloudSmall, cloudTiny, cloudBig2, cloudSmall2, cloudTiny2);
+  
+  cloudArray.push(cloudBig, cloudSmall, cloudTiny, cloudBig2, cloudSmall2, cloudTiny2);
+
   return { 
     cabin, 
     chimney, 
@@ -137,7 +168,14 @@ function createMeshes() {
     humanLeg2,
     human2: humanArray,
     smoke,
-    smoke2: smokeArray
+    smoke2: smokeArray,
+    cloudBig,
+    cloudSmall,
+    cloudTiny,
+    cloudBig2,
+    cloudSmall2,
+    cloudTiny2,
+    cloudGroup: cloudArray
   } ;
 }
 

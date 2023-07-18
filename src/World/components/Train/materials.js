@@ -34,8 +34,11 @@ function createMaterials() {
   const smoke = new MeshStandardMaterial({
     color: '#B0C4DE'
   }) ;
+  const cloud = new MeshStandardMaterial({
+    color: 'white'
+  }) ;
   
-  return { body, detail, out, trackSide, trackRail, humanFace, humanBody, humanLeg, smoke } ;
+  return { body, detail, out, trackSide, trackRail, humanFace, humanBody, humanLeg, smoke, cloud } ;
 }
 
 export { createMaterials } ;

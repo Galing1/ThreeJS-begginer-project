@@ -27,7 +27,13 @@ class Train extends Group {
       this.meshes.humanBody,
       this.meshes.humanLeg,
       this.meshes.humanLeg2,
-      this.meshes.smoke
+      this.meshes.smoke,
+      this.meshes.cloudBig,
+      this.meshes.cloudSmall,
+      this.meshes.cloudTiny,
+      this.meshes.cloudBig2,
+      this.meshes.cloudSmall2,
+      this.meshes.cloudTiny2
     );
 
     // Add each human from humanArray to the group
@@ -37,6 +43,10 @@ class Train extends Group {
 
     for (const smokes of this.meshes.smoke2) {
       this.add(smokes);
+    }
+
+    for (const clouds of this.meshes.cloudGroup) {
+      this.add(clouds);
     }
   }
 
@@ -55,6 +65,13 @@ class Train extends Group {
       smokes.position.y += 1 * delta ;
       if (smokes.position.y > 1.7) {
         smokes.position.y = 0 ;
+      }
+    }
+
+    for (const clouds of this.meshes.cloudGroup) {
+      clouds.position.z += 0.5 * delta ;
+      if (clouds.position.z > 3) {
+        clouds.position.z = -3 ;
       }
     }
   }
