@@ -9,6 +9,7 @@ function createMeshes() {
 
   const trackRailArray = [] ;
   const humanArray = [] ;
+  const smokeArray = [] ;
 
   const cabin = new Mesh(geometry.cabin, material.body) ;
   cabin.position.set(1.5, 1.4, 0);
@@ -93,6 +94,29 @@ function createMeshes() {
     humanArray.push(human2) ;
   }
 
+  const smokes = new Group() ;
+
+  const smoke = new Mesh(geometry.smoke, material.smoke) ;
+  smoke.position.y = 2.3 ;
+  smoke.position.x -= 1.9 ;
+
+  smokes.add(smoke) ;
+
+  let smoke2 ;
+
+  for (let i = 0.2 ; i <= 0.4 ; i += 0.2) {
+    smoke2 = smokes.clone() ;
+    smoke2.position.z -= 0.1 ;
+    smoke2.position.x -= i ;
+
+    if (i == 0.4) {
+      smoke2.position.z += 0.2 ;
+      smoke2.position.x += 0.2 ;
+    }
+
+    smokeArray.push(smoke2) ;
+  }
+
   return { 
     cabin, 
     chimney, 
@@ -111,7 +135,9 @@ function createMeshes() {
     humanBody,
     humanLeg,
     humanLeg2,
-    human2: humanArray
+    human2: humanArray,
+    smoke,
+    smoke2: smokeArray
   } ;
 }
 

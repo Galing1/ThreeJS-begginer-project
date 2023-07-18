@@ -1,4 +1,4 @@
-import { BoxGeometry, CylinderGeometry, SphereGeometry } from "../../../three/build/three.module.js" ;
+import { BoxGeometry, CylinderGeometry, Sphere, SphereGeometry } from "../../../three/build/three.module.js" ;
 
 function createGeometries() {
   const cabin = new BoxGeometry(2, 2.25, 1.5) ;
@@ -19,9 +19,11 @@ function createGeometries() {
 
   const humanBody = new BoxGeometry(1, 1, 0.5) ;
 
-  const humanLeg = new CylinderGeometry(0.1, 0.1, 1.2, 16)
+  const humanLeg = new CylinderGeometry(0.1, 0.1, 1.2, 16) ;
+
+  const smoke = new SphereGeometry(0.1, 16, 16) ;
  
-  return { cabin, nose, wheel, chimney, window, trackSide, trackRail, humanFace, humanBody, humanLeg } ;
+  return { cabin, nose, wheel, chimney, window, trackSide, trackRail, humanFace, humanBody, humanLeg, smoke } ;
 }
 
 export { createGeometries } ;
