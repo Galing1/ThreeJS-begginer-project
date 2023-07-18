@@ -6,9 +6,9 @@ const wheelSpeed = MathUtils.degToRad(24) ;
 
 class Train extends Group {
   constructor() {
-    super() ;
+    super();
 
-    this.meshes = createMeshes() ;
+    this.meshes = createMeshes();
 
     this.add(
       this.meshes.cabin,
@@ -27,8 +27,17 @@ class Train extends Group {
       this.meshes.humanBody,
       this.meshes.humanLeg,
       this.meshes.humanLeg2,
-      this.meshes.human2
-    ) ;
+      this.meshes.smoke
+    );
+
+    // Add each human from humanArray to the group
+    for (const human of this.meshes.human2) {
+      this.add(human);
+    }
+
+    for (const smokes of this.meshes.smoke2) {
+      this.add(smokes);
+    }
   }
 
   tick(delta) {
@@ -36,7 +45,20 @@ class Train extends Group {
     this.meshes.smallWheelRear.rotation.y += wheelSpeed * delta;
     this.meshes.smallWheelCenter.rotation.y += wheelSpeed * delta;
     this.meshes.smallWheelFront.rotation.y += wheelSpeed * delta;
+
+    this.meshes.smoke.position.y += 1 * delta ;
+    if (this.meshes.smoke.position.y > 4) {
+      this.meshes.smoke.position.y = 2.3 ;
+    }
+
+    for (const smokes of this.meshes.smoke2) {
+      smokes.position.y += 1 * delta ;
+      if (smokes.position.y > 1.7) {
+        smokes.position.y = 0 ;
+      }
+    }
   }
 }
+
 
 export { Train } ;
